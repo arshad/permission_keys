@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Displays the permission keys on the Permissions page.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function permission_keys_form_user_admin_permissions_alter(&$form, &$form_state, $form_id) {
+  foreach ($form['permission'] as $key => $permission) {
+    if (is_string($key)) {
+      $form['permission'][$key]['#markup'] .= ' <code>(' . $key . ')</code>';
+    }
+  }
+}
